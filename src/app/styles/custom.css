@@ -1,0 +1,12 @@
+.sub-title {
+    font-weight: var(--font-weight-bold);
+    font-size: 13px;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
+.overline {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-sm);
+    letter-spacing: 10px;
+}

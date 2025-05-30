@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@import "tailwindcss";
+
+
+@theme{
+    --color-peru: #D87D4A;
+    --color-peru-light: #FBAF85;
+    --color-whitesmoke: #F1F1F1;
+    --color-whitesmoke-light: #FAFAFA;
+    --color-black-light: #101010;
+
+    /* font family */
+   --default-font-family: 'Manrope', sans-serif;
+    --font-manrope: "Manrope", sans-serif;
+
+    --text-base: 1rem;
+    --text-medium: 18px;
+    --text-lg: 20px;
+}
+
+
+@layer base {
+    h1 {
+        font-size: 56px;
+        line-height: 58px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        font-size: var(--text-4xl);
+        line-height: 44px;
+    }
+
+    h3 {
+        font-weight: 700;
+        font-size: 32px;
+    }
+
+    h4 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    h5 {
+        font-size: 24px;
+    }
+
+    h6 {
+        font-size: 18px;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 25px;
+        letter-spacing: normal;
+    }
+
+}
