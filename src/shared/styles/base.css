@@ -1,0 +1,39 @@
+
+@layer base {
+    h1 {
+        font-size: 56px;
+        line-height: 58px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        font-size: var(--text-4xl);
+        line-height: 44px;
+    }
+
+    h3 {
+        font-weight: 700;
+        font-size: 32px;
+    }
+
+    h4 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    h5 {
+        font-size: 24px;
+    }
+
+    h6 {
+        font-size: 18px;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 25px;
+        letter-spacing: normal;
+    }
+
+}

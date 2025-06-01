@@ -1,0 +1,16 @@
+
+@theme{
+    --color-peru: #D87D4A;
+    --color-peru-light: #FBAF85;
+    --color-whitesmoke: #F1F1F1;
+    --color-whitesmoke-light: #FAFAFA;
+    --color-black-light: #101010;
+
+    /* font family */
+    --default-font-family: 'Manrope', sans-serif;
+    --font-manrope: "Manrope", sans-serif;
+
+    --text-base: 1rem;
+    --text-medium: 18px;
+    --text-lg: 20px;
+}
