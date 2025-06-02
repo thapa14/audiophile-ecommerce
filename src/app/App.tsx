@@ -1,15 +1,17 @@
-import "shared/styles/index.css"
-import {ErrorBoundary} from "react-error-boundary";
-import {RouterProvider} from "react-router";
+import "shared/styles/index.css";
+import { ErrorBoundary } from "react-error-boundary";
+import { RouterProvider } from "react-router";
 import routers from "app/routers";
 
 function App() {
-    return <ErrorBoundary fallback={<div>Something Went Wrong</div>}>
-        <RouterProvider router={routers} />
+  return (
+    <ErrorBoundary fallback={<div>Something Went Wrong</div>}>
+      <RouterProvider router={routers} />
     </ErrorBoundary>
+  );
 }
 
-export default App
+export default App;
 
 //
 // <div className="tracking-[1] ml-5">

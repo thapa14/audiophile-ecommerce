@@ -13,4 +13,8 @@
     --text-base: 1rem;
     --text-medium: 18px;
     --text-lg: 20px;
+
+    /* breakpoints */
+    --breakpoint-xs: 26.5625rem; /*425px*/
+    --breakpoint-sm: 36rem;
 }
