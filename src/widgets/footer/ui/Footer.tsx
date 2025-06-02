@@ -1,10 +1,10 @@
 import type { FC } from 'react';
-import logo from 'shared/assets/image/logo.svg';
+import logo from 'shared/assets/logo/logo.svg';
 import { Icon } from '@iconify/react';
 
 const Footer: FC = () => {
     return (
-        <div className="absolute bottom-0 w-full bg-black text-white">
+        <div className="w-full self-end bg-black text-white">
             <div className="container grid grid-cols-2 gap-9 py-8">
                 <div className="order-1 col-span-2 flex justify-center md:justify-start lg:col-span-1">
                     <img className="h-8 w-36" src={logo} alt="Company Logo" />

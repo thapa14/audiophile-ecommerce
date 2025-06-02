@@ -1,16 +1,15 @@
-import { type FC, useState } from 'react';
-import logo from 'shared/assets/image/logo.svg';
 import { Icon } from '@iconify/react';
+import { type FC } from 'react';
+import logo from 'shared/assets/logo/logo.svg';
+import { useHeader } from 'widgets/header/modal';
 
 const Header: FC = () => {
-    const [isMenuOpened, setIsMenuOpened] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpened(prev => !prev);
-    };
+    const { isMenuOpened, toggleMenu } = useHeader();
 
     return (
-        <div className="fixed top-0 flex h-[90px] w-full items-center justify-between bg-black text-white">
+        <div
+            className={`fixed top-0 z-50 flex h-[90px] w-full items-center justify-between bg-black text-white`}
+        >
             <nav className="relative container flex h-full w-full items-center">
                 <div className="mx-auto w-full">
                     <div className="relative flex items-center justify-between">

@@ -1,13 +1,15 @@
 import type { ReactNode } from 'react';
-import { Header } from 'widgets/header';
-import { Footer } from 'widgets/footer';
 import { Outlet } from 'react-router';
+import { Footer } from 'widgets/footer';
+import { Header } from 'widgets/header';
 
 export function Layout(): ReactNode {
     return (
-        <div className="bg-peru-light relative h-full min-h-screen w-full">
+        <div className="bg-peru-light flex h-full min-h-screen w-full flex-col">
             <Header />
-            <Outlet />
+            <div className="flex-grow">
+                <Outlet />
+            </div>
             <Footer />
         </div>
     );

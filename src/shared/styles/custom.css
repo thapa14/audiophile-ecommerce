@@ -9,7 +9,9 @@
     font-weight: var(--font-weight-normal);
     font-size: var(--text-sm);
     letter-spacing: 10px;
+    text-decoration-line: none;
 }
+
 .container {
     max-width: 328px;
     margin: auto;
