@@ -5,7 +5,7 @@ import { Header } from 'widgets/header';
 
 export function Layout(): ReactNode {
     return (
-        <div className="bg-peru-light flex h-full min-h-screen w-full flex-col">
+        <div className="flex h-full min-h-screen w-full flex-col bg-white">
             <Header />
             <div className="flex-grow">
                 <Outlet />
