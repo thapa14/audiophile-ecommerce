@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-export default function useHeader() {
+interface UseHeaderTypes {
+    isMenuOpened: boolean;
+    toggleMenu: () => void;
+}
+
+export default function useHeader(): UseHeaderTypes {
     const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false);
 
     const toggleMenu = () => {

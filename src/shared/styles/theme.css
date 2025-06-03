@@ -16,5 +16,5 @@
 
     /* breakpoints */
     --breakpoint-xs: 26.5625rem; /*425px*/
-    --breakpoint-sm: 36rem;
+    --breakpoint-sm: 36rem; /*576px*/
 }
