@@ -1,14 +1,14 @@
-import "shared/styles/index.css";
-import { ErrorBoundary } from "react-error-boundary";
-import { RouterProvider } from "react-router";
-import routers from "app/routers";
+import 'shared/tailwind-configs/index.css';
+import { ErrorBoundary } from 'react-error-boundary';
+import { RouterProvider } from 'react-router';
+import routers from 'app/routers';
 
 function App() {
-  return (
-    <ErrorBoundary fallback={<div>Something Went Wrong</div>}>
-      <RouterProvider router={routers} />
-    </ErrorBoundary>
-  );
+    return (
+        <ErrorBoundary fallback={<div>Something Went Wrong</div>}>
+            <RouterProvider router={routers} />
+        </ErrorBoundary>
+    );
 }
 
 export default App;
