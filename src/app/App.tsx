@@ -1,7 +1,7 @@
 import 'shared/tailwind-configs/index.css';
+import routers from 'app/routers';
 import { ErrorBoundary } from 'react-error-boundary';
 import { RouterProvider } from 'react-router';
-import routers from 'app/routers';
 
 function App() {
     return (

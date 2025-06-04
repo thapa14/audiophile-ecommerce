@@ -1,32 +1,50 @@
 
 @layer base {
     h1 {
-        font-size: 56px;
-        line-height: 58px;
-        letter-spacing: 2px;
+        font-size: 36px;
+        line-height: 40px;
+        letter-spacing: 1.3px;
     }
 
     h2 {
-        font-size: var(--text-4xl);
-        line-height: 44px;
+        font-size: 28px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    @media screen and (min-width: 576px)  {
+        h1{
+            font-size: 56px;
+            line-height: 58px;
+            letter-spacing: 2px;
+        }
+        h2 {
+            font-size: 40px;
+            line-height: 44px;
+            font-weight: bold;
+            letter-spacing: 1.43px;
+        }
     }
 
     h3 {
-        font-weight: 700;
         font-size: 32px;
+        font-weight: 700;
     }
 
     h4 {
         font-size: 28px;
         letter-spacing: 2px;
+        font-weight: bold;
     }
 
     h5 {
         font-size: 24px;
+        font-weight: bold;
     }
 
     h6 {
         font-size: 18px;
+        font-weight: bold;
     }
 
     p {

@@ -1,0 +1,1 @@
+export { useResponsiveImage } from './useResponsiveImage';

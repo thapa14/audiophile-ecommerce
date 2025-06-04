@@ -5,6 +5,7 @@
     --color-whitesmoke: #F1F1F1;
     --color-whitesmoke-light: #FAFAFA;
     --color-black-light: #101010;
+    --color-quartz: #4C4C4C;
 
     /* font family */
     --default-font-family: 'Manrope', sans-serif;
@@ -17,4 +18,8 @@
     /* breakpoints */
     --breakpoint-xs: 26.5625rem; /*425px*/
     --breakpoint-sm: 36rem; /*576px*/
+
+    /*spacing */
+    --spacing-30: 7.5rem;  /* 0.25rem * 30 = 120px */
+    --spacing-50: 12.5rem; /* 200px */
 }

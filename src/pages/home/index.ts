@@ -1,2 +1,1 @@
-import Home from './ui';
-export { Home };
+export { Home } from './Home';

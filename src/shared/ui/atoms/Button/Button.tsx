@@ -1,15 +1,15 @@
-import type { ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import clsx from 'clsx';
 import { Icon } from '@iconify/react';
 
-type ButtonProps = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     className?: string;
     icon?: string;
     iconClass?: string;
     iconPlacement?: 'start' | 'end';
     variant?: 'contained' | 'outlined' | 'text';
-};
+}
 
 export default function Button({
     children,
@@ -26,7 +26,7 @@ export default function Button({
     const variantClass = clsx({
         'w-40 h-12': variant !== 'text',
         'text-white bg-peru hover:bg-peru-light': variant === 'contained',
-        'text-black bg-white border-2 border-black hover:text-white hover:bg-black':
+        'text-black bg-transparent border-2 border-black hover:text-white hover:bg-black':
             variant === 'outlined',
     });
 
@@ -35,8 +35,6 @@ export default function Button({
             {icon && iconPlacement === 'start' && (
                 <Icon
                     icon={icon}
-                    width={iconSize}
-                    height={iconSize}
                     className={clsx('text-peru h-[18px] w-[18px] opacity-100', iconClass)}
                 />
             )}

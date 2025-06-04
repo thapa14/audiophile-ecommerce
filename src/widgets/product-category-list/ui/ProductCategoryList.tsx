@@ -1,5 +1,5 @@
+import { ProductCategoryCard } from 'entities/product-category/ui';
 import type { FC } from 'react';
-import ProductCategoryCard from 'shared/ui/product-category-card/ProductCategoryCard';
 import headphone from 'shared/assets/home/mobile/product-headphone-preview.svg';
 
 const ProductCategoryList: FC = () => {
