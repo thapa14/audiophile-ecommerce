@@ -1,3 +1,4 @@
+import { SeeProductButton } from 'features/view-product';
 import type { FC } from 'react';
 import desktop from 'shared/assets/home/desktop/image-hero.jpg';
 import mobile from 'shared/assets/home/mobile/image-hero.jpg';
@@ -20,12 +21,12 @@ export const Hero: FC = () => {
             <div className="z-10 container flex h-full w-full items-center justify-center lg:justify-start">
                 <DynamicInfoBlock>
                     <DynamicInfoBlock.Feature>NEW PRODUCT</DynamicInfoBlock.Feature>
-                    <DynamicInfoBlock.Title>XX99 Mark II HeadphoneS</DynamicInfoBlock.Title>
+                    <DynamicInfoBlock.Title>XX99 Mark II Headphones</DynamicInfoBlock.Title>
                     <DynamicInfoBlock.Description>
                         Experience natural, lifelike audio and exceptional build quality made for
                         the passionate music enthusiast.
                     </DynamicInfoBlock.Description>
-                    <DynamicInfoBlock.Button>See product</DynamicInfoBlock.Button>
+                    <SeeProductButton slug="xx99-mark-two-headphones" className="uppercase" />
                 </DynamicInfoBlock>
             </div>
         </div>

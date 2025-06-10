@@ -1,19 +1,19 @@
-import type { ProductCategory } from 'entities/product-category/modal';
-import { useState, type FC } from 'react';
+import { type FC, useState } from 'react';
 import { Button } from 'shared/ui';
+import type { ProductCategory } from 'widgets/product-category-list/ui/CategoryCard.types';
 
-const ProductCategoryCard: FC<ProductCategory> = ({ title, image, altName, shopNowClick }) => {
+const CategoryCard: FC<ProductCategory> = ({ title, image, altName, shopNowClick }) => {
     const [isHovered, setHovered] = useState(false);
 
     return (
         <div
-            className="relative flex w-full cursor-pointer flex-col items-center gap-4 py-6 md:gap-4"
+            className="relative flex w-full cursor-pointer flex-col items-center gap-4 pb-6 md:gap-4"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
             <div className="relative z-20 w-1/4 pb-4 md:w-20 md:pb-5 lg:w-1/3">
                 <img className="w-full drop-shadow-sm" src={image} alt={altName} />
-                <div className="absolute bottom-0 z-0 h-3 w-full rounded-full bg-black opacity-30 blur-md"></div>
+                <div className="absolute bottom-0 z-0 h-8 w-full rounded-full bg-black opacity-40 blur-lg"></div>
             </div>
             <h6 className="z-20 text-[15px] font-bold tracking-[1px] uppercase">{title}</h6>
             <Button
@@ -29,4 +29,4 @@ const ProductCategoryCard: FC<ProductCategory> = ({ title, image, altName, shopN
     );
 };
 
-export { ProductCategoryCard };
+export { CategoryCard };

@@ -1,1 +1,1 @@
-export { ProductCategoryList } from './ui/ProductCategoryList';
+export { CategoryCard, ProductCategoryList } from './ui';

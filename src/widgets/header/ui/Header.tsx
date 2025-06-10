@@ -1,15 +1,16 @@
 import { Icon } from '@iconify/react';
+import { useCart } from 'entities/cart/modal/cartContext';
 import { type FC } from 'react';
+import { Link } from 'react-router';
 import logo from 'shared/assets/logo/logo.svg';
 import { useHeader } from 'widgets/header/modal';
 
 const Header: FC = () => {
     const { isMenuOpened, toggleMenu } = useHeader();
+    const { showCart, isCartOpened } = useCart();
 
     return (
-        <div
-            className={`fixed top-0 z-50 flex h-[90px] w-full items-center justify-between bg-black text-white`}
-        >
+        <div className="border-stroke fixed top-0 z-50 flex h-[90px] w-full items-center justify-between border-b-[0.5px] bg-black text-white">
             <nav className="relative container flex h-full w-full items-center">
                 <div className="mx-auto w-full">
                     <div className="relative flex items-center justify-between">
@@ -51,31 +52,31 @@ const Header: FC = () => {
                             <div className="hidden sm:ml-6 lg:block">
                                 <div className="flex space-x-4">
                                     {/*// <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->*/}
-                                    <a
-                                        href="#"
+                                    <Link
+                                        to="/"
                                         className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
                                         aria-current="page"
                                     >
-                                        Dashboard
-                                    </a>
-                                    <a
-                                        href="#"
+                                        Home
+                                    </Link>
+                                    <Link
+                                        to="/headphones"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                                     >
-                                        Team
-                                    </a>
-                                    <a
-                                        href="#"
+                                        Headphones
+                                    </Link>
+                                    <Link
+                                        to="/earphones"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                                     >
-                                        Projects
-                                    </a>
-                                    <a
-                                        href="#"
+                                        Earphones
+                                    </Link>
+                                    <Link
+                                        to="/speakers"
                                         className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                                     >
-                                        Calendar
-                                    </a>
+                                        Speakers
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +85,10 @@ const Header: FC = () => {
                             <button
                                 aria-label="View cart"
                                 type="button"
-                                className="relative rounded-full text-white hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                className="hover:text-peru relative cursor-pointer rounded-full text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                onClick={() => {
+                                    showCart();
+                                }}
                             >
                                 <Icon icon="mdi-light:cart" width="24" height="24" />
                             </button>
@@ -100,31 +104,31 @@ const Header: FC = () => {
                     hidden={!isMenuOpened}
                 >
                     <div className="">
-                        <a
-                            href="#"
+                        <Link
+                            to="/"
                             className="block rounded-md bg-gray-800 px-3 py-2 text-base font-medium text-white"
                             aria-current="page"
                         >
-                            Dashboard
-                        </a>
-                        <a
-                            href="#"
+                            Home
+                        </Link>
+                        <Link
+                            to="/headphones"
                             className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Team
-                        </a>
-                        <a
-                            href="#"
+                            Headphones
+                        </Link>
+                        <Link
+                            to="/earphones"
                             className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Projects
-                        </a>
-                        <a
-                            href="#"
+                            Earphones
+                        </Link>
+                        <Link
+                            to="speakers"
                             className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                         >
-                            Calendar
-                        </a>
+                            Speakers
+                        </Link>
                     </div>
                 </div>
             </nav>

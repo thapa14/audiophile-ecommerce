@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 interface UseResponsiveImageReturn {
-    bgImage: string;
+    bgImage: string | null;
 }
 
 interface UseResponsiveImageOptions {
@@ -15,7 +15,7 @@ export function useResponsiveImage({
     tablet,
     desktop,
 }: UseResponsiveImageOptions): UseResponsiveImageReturn {
-    const [bgImage, setBgImage] = useState('');
+    const [bgImage, setBgImage] = useState<string | null>(null);
 
     useEffect(() => {
         const setImage = () => {

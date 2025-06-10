@@ -20,8 +20,8 @@ DynamicInfoBlock.Feature = ({ className, ...props }: ComponentProps<'p'>) => {
     return <p className={clsx('mb-4 overline opacity-50 sm:mb-6', className)} {...props} />;
 };
 
-DynamicInfoBlock.Title = ({ className, ...props }: ComponentProps<'h2'>) => {
-    return <h2 className={clsx('mb-6 text-center lg:text-start', className)} {...props} />;
+DynamicInfoBlock.Title = ({ className, ...props }: ComponentProps<'h1'>) => {
+    return <h1 className={clsx('mb-6 text-center lg:text-start', className)} {...props} />;
 };
 
 DynamicInfoBlock.Description = ({ className, ...props }: ComponentProps<'p'>) => {
@@ -37,6 +37,5 @@ DynamicInfoBlock.Description = ({ className, ...props }: ComponentProps<'p'>) =>
 };
 
 DynamicInfoBlock.Button = ({ className, ...props }: ComponentProps<typeof Button>) => {
-    console.log(props);
     return <Button className={clsx('uppercase lg:mt-2', className)} {...props} />;
 };

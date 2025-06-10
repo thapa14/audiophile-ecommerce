@@ -1,9 +1,9 @@
-
 @layer base {
     h1 {
         font-size: 36px;
         line-height: 40px;
         letter-spacing: 1.3px;
+        font-weight: bold;
     }
 
     h2 {
@@ -12,23 +12,10 @@
         letter-spacing: 1px;
     }
 
-    @media screen and (min-width: 576px)  {
-        h1{
-            font-size: 56px;
-            line-height: 58px;
-            letter-spacing: 2px;
-        }
-        h2 {
-            font-size: 40px;
-            line-height: 44px;
-            font-weight: bold;
-            letter-spacing: 1.43px;
-        }
-    }
-
     h3 {
-        font-size: 32px;
-        font-weight: 700;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 0.86px;
     }
 
     h4 {
@@ -52,6 +39,27 @@
         font-size: 15px;
         line-height: 25px;
         letter-spacing: normal;
+    }
+
+    @media screen and (min-width: 576px) {
+        h1 {
+            font-size: 56px;
+            line-height: 58px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 44px;
+            font-weight: bold;
+            letter-spacing: 1.43px;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 1.15px;
+        }
     }
 
 }

@@ -1,9 +1,10 @@
-import type { ReactNode } from "react";
+import { CartProvider } from 'entities/cart/modal/CartProvider';
+import { type ReactNode } from 'react';
 
 type ProvidersCheck = {
-  children: ReactNode;
+    children: ReactNode;
 };
 
-export default function Providers({ children }: ProvidersCheck) {
-  return <>{children}</>;
+export default function ContextProvider({ children }: ProvidersCheck) {
+    return <CartProvider>{children}</CartProvider>;
 }
