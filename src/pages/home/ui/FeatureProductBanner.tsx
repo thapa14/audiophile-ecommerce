@@ -13,7 +13,13 @@ const FeatureProductBanner: FC = () => {
     return (
         <div className="bg-peru relative container h-[600px] overflow-hidden rounded-lg text-white md:h-[720px] lg:h-[560px]">
             <div className="lg z-30 flex w-full flex-col items-center gap-y-8 pt-14 lg:ml-[90px] lg:h-full lg:flex-row lg:items-end lg:gap-10 lg:pt-0 2xl:ml-[118px] 2xl:gap-x-[138px]">
-                <img src={speaker} alt="ZX9 SPEAKER" className="z-30 w-44 lg:-mb-8 lg:w-[410px]" />
+                {speaker && (
+                    <img
+                        src={speaker}
+                        alt="ZX9 SPEAKER"
+                        className="z-30 w-44 lg:-mb-8 lg:w-[410px]"
+                    />
+                )}
 
                 <DynamicInfoBlock className="z-30 p-6 md:max-w-[348px] lg:mt-32 lg:self-start lg:p-0">
                     <DynamicInfoBlock.Title className="mx-6 lg:mx-0">
