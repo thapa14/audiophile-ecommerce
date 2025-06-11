@@ -10,5 +10,5 @@ interface ImageProps {
 
 export const Image: FC<ImageProps> = ({ image, alt, className }) => {
     const { bgImage } = useResponsiveImage(image);
-    return <img src={bgImage} alt={alt} className={className} />;
+    return bgImage ? <img src={bgImage} alt={alt} className={className} /> : <></>;
 };
