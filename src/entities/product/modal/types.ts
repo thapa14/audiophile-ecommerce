@@ -8,7 +8,7 @@ export type SuggestedProductType = {
     image: ImageByScreen;
 };
 
-export type Product = Readonly<{
+export type Product = {
     id: number;
     slug: string;
     name: string;
@@ -26,7 +26,9 @@ export type Product = Readonly<{
         third: ImageByScreen;
     };
     others: SuggestedProductType[];
-}>;
+};
+
+export type ReadOnlyProduct = Readonly<Product>;
 
 export interface ProductInfoCardProps extends ProductInfoProps {
     id: number;

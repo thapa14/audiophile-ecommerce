@@ -1,14 +1,14 @@
-import type { Product } from 'entities/product';
+import type { ReadOnlyProduct } from 'entities/product';
 import data from 'shared/data.json';
 
 export function fetchMockProductDetails(
     productId: string | null,
     slug: string | null
-): Promise<Product> {
+): Promise<ReadOnlyProduct> {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const productData = data.find(
-                (product: Product) => product.id === Number(productId) || product.slug === slug
+                product => product.id === Number(productId) || product.slug === slug
             );
             if (productData) {
                 resolve(productData);

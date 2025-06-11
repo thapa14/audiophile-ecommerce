@@ -1,10 +1,10 @@
-import type { Product } from 'entities/product';
+import type { ReadOnlyProduct } from 'entities/product';
 import data from 'shared/data.json';
 
-export function fetchMockPageData(category: string): Promise<Product[]> {
-    return new Promise<Product[]>((resolve, reject) => {
+export function fetchMockPageData(category: string): Promise<ReadOnlyProduct[]> {
+    return new Promise<ReadOnlyProduct[]>((resolve, reject) => {
         setTimeout(() => {
-            const filteredData = data.filter((product: Product) => {
+            const filteredData = data.filter((product: ReadOnlyProduct) => {
                 return product.category === category;
             });
             if (filteredData.length > 0) {
