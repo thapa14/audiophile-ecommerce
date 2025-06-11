@@ -7,7 +7,15 @@ import { ProductCategoryList } from 'widgets/product-category-list';
 import { YouMayAlsoLike } from 'widgets/you-may-also-like';
 
 export const ProductDetails: FC = () => {
-    const { productData } = useProductDetails();
+    const { productData, loading } = useProductDetails();
+
+    if (loading) {
+        return (
+            <div className="container pt-[90px]">
+                <h6>Loading...</h6>
+            </div>
+        );
+    }
 
     if (!productData) {
         return (
@@ -16,6 +24,7 @@ export const ProductDetails: FC = () => {
             </div>
         );
     }
+
     return (
         <div className="container pt-[90px]">
             <div className="mt-4 mb-6 flex justify-start md:mt-20 md:mb-14">

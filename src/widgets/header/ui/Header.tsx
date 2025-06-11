@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { useCart } from 'entities/cart/modal/cartContext';
+import { useCartContext } from 'entities/cart/modal/cartContext';
 import { type FC } from 'react';
 import { Link } from 'react-router';
 import logo from 'shared/assets/logo/logo.svg';
@@ -7,7 +7,7 @@ import { useHeader } from 'widgets/header/modal';
 
 const Header: FC = () => {
     const { isMenuOpened, toggleMenu } = useHeader();
-    const { showCart, isCartOpened } = useCart();
+    const { showCart } = useCartContext();
 
     return (
         <div className="border-stroke fixed top-0 z-50 flex h-[90px] w-full items-center justify-between border-b-[0.5px] bg-black text-white">

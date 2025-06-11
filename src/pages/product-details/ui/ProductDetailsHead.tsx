@@ -1,16 +1,11 @@
-import { ProductInfo, type ProductInfoProps } from 'entities/product';
+import { ProductInfo } from 'entities/product';
 import { AddToCart } from 'features/add-to-cart';
+import type { ProductDetailsHeadProps } from 'pages/product-details/ui/ProductDetailsHead.types';
 import type { FC } from 'react';
 import { useResponsiveImage } from 'shared/lib/hooks';
-import type { ImageByScreen } from 'shared/type-check';
-
-type ProductDetailsHeadProps = ProductInfoProps & {
-    image: ImageByScreen;
-    id: number;
-    price: number;
-};
 
 export const ProductDetailsHead: FC<ProductDetailsHeadProps> = ({
+    id,
     image,
     title,
     isNew,
@@ -39,7 +34,7 @@ export const ProductDetailsHead: FC<ProductDetailsHeadProps> = ({
                 />
                 <div className="flex flex-col gap-y-8 lg:gap-y-12">
                     <h6>$ {price}</h6>
-                    <AddToCart />
+                    <AddToCart pId={id} />
                 </div>
             </div>
         </div>

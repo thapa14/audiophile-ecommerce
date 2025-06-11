@@ -1,3 +1,1 @@
-export type { Product } from './types';
-export type { ProductInfoCardProps } from './types';
-export type { SuggestedProductType } from './types';
+export type { Product, ReadOnlyProduct, ProductInfoCardProps, SuggestedProductType } from './types';
