@@ -37,54 +37,54 @@ export const Checkout: FC = () => {
                 </Button>
             </div>
             <FormProvider {...methods}>
-                <div className="grid grid-cols-1 items-start gap-y-8 lg:grid-cols-12 lg:gap-x-6">
-                    <div className="bg-whitesmoke rounded-lg p-6 lg:col-span-8">
-                        <h3 className="mb-8 uppercase">Checkout</h3>
+                <form
+                    onSubmit={methods.handleSubmit(
+                        data => console.log(data),
+                        error => console.log(error)
+                    )}
+                >
+                    <div className="grid grid-cols-1 items-start gap-y-8 lg:grid-cols-12 lg:gap-x-6">
+                        <div className="bg-whitesmoke rounded-lg p-6 lg:col-span-8">
+                            <h3 className="mb-8 uppercase">Checkout</h3>
 
-                        <form
-                            onSubmit={methods.handleSubmit(
-                                data => console.log(data),
-                                error => console.log(error)
-                            )}
-                        >
                             <div className="flex flex-col gap-y-8">
                                 <BillingForm />
                                 <ShippingForm />
                                 <PaymentForm />
                             </div>
-                        </form>
-                    </div>
+                        </div>
 
-                    <div className="bg-whitesmoke flex flex-col items-start gap-y-8 rounded-lg p-6 lg:col-span-4">
-                        <h6 className="uppercase">Summary</h6>
-                        <div className="flex flex-col gap-y-6">
-                            {cartItems.map(item => (
-                                <CartItem key={item.id} data={item} />
-                            ))}
+                        <div className="bg-whitesmoke flex flex-col items-start gap-y-8 rounded-lg p-6 lg:col-span-4">
+                            <h6 className="uppercase">Summary</h6>
+                            <div className="flex flex-col gap-y-6">
+                                {cartItems.map(item => (
+                                    <CartItem key={item.id} data={item} />
+                                ))}
+                            </div>
+                            <div className="flex w-full flex-col gap-y-2">
+                                <div className="flex justify-between">
+                                    <p className="uppercase opacity-50">Total</p>
+                                    <h6>$ {cartTotal}</h6>
+                                </div>
+                                <div className="flex justify-between">
+                                    <p className="uppercase opacity-50">Shipping</p>
+                                    <h6>$ 50</h6>
+                                </div>
+                                <div className="flex justify-between">
+                                    <p className="uppercase opacity-50">VAT (INCLUDED)</p>
+                                    <h6>$ {vat}</h6>
+                                </div>
+                                <div className="mt-4 flex justify-between">
+                                    <p className="uppercase opacity-50">Grand Total</p>
+                                    <h6 className="text-peru">$ {grandTotal}</h6>
+                                </div>
+                            </div>
+                            <Button variant="contained" className="w-full uppercase" type="submit">
+                                Continue & pay
+                            </Button>
                         </div>
-                        <div className="flex w-full flex-col gap-y-2">
-                            <div className="flex justify-between">
-                                <p className="uppercase opacity-50">Total</p>
-                                <h6>$ {cartTotal}</h6>
-                            </div>
-                            <div className="flex justify-between">
-                                <p className="uppercase opacity-50">Shipping</p>
-                                <h6>$ 50</h6>
-                            </div>
-                            <div className="flex justify-between">
-                                <p className="uppercase opacity-50">VAT (INCLUDED)</p>
-                                <h6>$ {vat}</h6>
-                            </div>
-                            <div className="mt-4 flex justify-between">
-                                <p className="uppercase opacity-50">Grand Total</p>
-                                <h6 className="text-peru">$ {grandTotal}</h6>
-                            </div>
-                        </div>
-                        <Button variant="contained" className="w-full uppercase" type="submit">
-                            Continue & pay
-                        </Button>
                     </div>
-                </div>
+                </form>
             </FormProvider>
         </div>
     );
