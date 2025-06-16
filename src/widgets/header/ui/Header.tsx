@@ -11,14 +11,14 @@ const Header: FC = () => {
 
     return (
         <div className="border-stroke fixed top-0 z-50 flex h-[90px] w-full items-center justify-between border-b-[0.5px] bg-black text-white">
-            <nav className="relative container flex h-full w-full items-center">
+            <nav className="relative container flex h-full items-center">
                 <div className="mx-auto w-full">
                     <div className="relative flex items-center justify-between">
                         <div className="absolute left-0 flex items-center lg:hidden">
                             {/*// <!-- Mobile menu button-->*/}
                             <button
                                 type="button"
-                                className="relative inline-flex items-center justify-center rounded-md text-white hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
+                                className="relative inline-flex items-center justify-center rounded-md text-white hover:bg-gray-700 hover:text-white"
                                 aria-controls="mobile-menu"
                                 aria-expanded={isMenuOpened}
                                 aria-label="mobile menu"
@@ -85,7 +85,7 @@ const Header: FC = () => {
                             <button
                                 aria-label="View cart"
                                 type="button"
-                                className="hover:text-peru relative cursor-pointer rounded-full text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                className="hover:text-peru relative cursor-pointer rounded-full text-white"
                                 onClick={() => {
                                     showCart();
                                 }}

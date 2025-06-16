@@ -1,3 +1,4 @@
+import ToastContainerProvider from 'app/providers/ToastProvider';
 import { CartProvider } from 'entities/cart/modal/CartProvider';
 import { type ReactNode } from 'react';
 
@@ -6,5 +7,10 @@ type ProvidersCheck = {
 };
 
 export default function ContextProvider({ children }: ProvidersCheck) {
-    return <CartProvider>{children}</CartProvider>;
+    return (
+        <>
+            <ToastContainerProvider />
+            <CartProvider>{children}</CartProvider>
+        </>
+    );
 }

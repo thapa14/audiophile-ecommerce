@@ -1,4 +1,5 @@
 import { Layout } from 'app/layout/Layout';
+import { Checkout } from 'pages/checkout';
 import { Home } from 'pages/home';
 import { CategoryPage } from 'pages/product-category';
 import { ProductDetails } from 'pages/product-details';
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
             {
                 path: '/product-details',
                 Component: ProductDetails,
+            },
+            {
+                path: '/checkout',
+                Component: Checkout,
             },
         ],
     },

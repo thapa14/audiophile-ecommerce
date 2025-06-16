@@ -34,7 +34,7 @@ export const ProductDetailsHead: FC<ProductDetailsHeadProps> = ({
                 />
                 <div className="flex flex-col gap-y-8 lg:gap-y-12">
                     <h6>$ {price}</h6>
-                    <AddToCart pId={id} />
+                    <AddToCart pId={id} price={price} />
                 </div>
             </div>
         </div>

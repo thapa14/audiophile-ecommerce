@@ -10,7 +10,7 @@ import {
 /**
  *  Cart Items -> it will take item id and quantity
  */
-export type CartItemsType = { id: number; quantity: number };
+export type CartItemsType = { id: number; quantity: number; price: number };
 
 /**
  *  cart context default initial types
@@ -26,7 +26,8 @@ export type CartInitialProps = {
 export type CartContextTypes = CartInitialProps & {
     showCart: () => void;
     hideCart: () => void;
-    addToCart: (pId: number, quantity: number) => void;
+    addToCart: (pId: number, quantity: number, price: number) => void;
+    onRemoveAll: () => void;
     onProductQuantityIncrement: (pId: number) => void;
     onProductQuantityDecrement: (pId: number) => void;
 };

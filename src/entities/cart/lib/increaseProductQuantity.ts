@@ -5,14 +5,13 @@ export const changeProductQuantity = (
     productId: number,
     operation: 'INCREMENT' | 'DECREMENT'
 ) => {
-    const tempProducts = [...allProducts];
-    const selectedProductIndex = allProducts.findIndex(product => product.id === productId);
-    if (selectedProductIndex > 0) {
-        if (operation === 'INCREMENT') {
-            tempProducts[selectedProductIndex].quantity += 1;
-        } else {
-            tempProducts[selectedProductIndex].quantity -= 1;
+    return allProducts.map((product: CartItemsType) => {
+        if (product.id === productId) {
+            return {
+                ...product,
+                quantity: operation === 'INCREMENT' ? product.quantity + 1 : product.quantity - 1,
+            };
         }
-    }
-    return tempProducts;
+        return product;
+    });
 };

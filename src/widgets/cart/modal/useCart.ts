@@ -1,21 +1,15 @@
-// import { getProductByProductId, useCartContext } from 'entities/cart';
-// import type { Product } from 'entities/product';
-// import { useEffect, useState } from 'react';
-// import type { UseCartResult } from 'widgets/cart/modal/types';
-//
-// export const useCart = (): UseCartResult => {
-//     // const { cartItems } = useCartContext();
-//     // const [cartItemsWithDetails, setCartItemsWithDetails] = useState<Product[]>([]);
-//     // useEffect(() => {
-//     //     const cartItemsDetails: Product[] = [];
-//     //     cartItems.forEach(item => {
-//     //         const productDetails = getProductByProductId(item.id);
-//     //         if (productDetails) {
-//     //             cartItemsDetails.push(productDetails);
-//     //         }
-//     //     });
-//     //
-//     //     setCartItemsWithDetails(cartItemsDetails);
-//     // }, [cartItems]);
-//     // return { cartQuantity: cartItems.length, cartItemsWithDetails };
-// };
+import { useCartContext } from 'entities/cart';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router';
+
+export const useCart = () => {
+    const navigate = useNavigate();
+    const { hideCart } = useCartContext();
+
+    const onCheckout = useCallback(() => {
+        navigate('/checkout');
+        hideCart();
+    }, [hideCart, navigate]);
+
+    return { onCheckout };
+};
