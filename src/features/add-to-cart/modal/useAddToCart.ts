@@ -1,13 +1,20 @@
 import { useCartContext } from 'entities/cart';
-import { type ChangeEventHandler, useCallback, useState } from 'react';
+import type { CartItemsType } from 'entities/cart/modal/types';
+import { type ChangeEventHandler, useCallback, useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
 
-export const useAddToCart = () => {
-    const [quantity, setQuantity] = useState<number>(1);
-    const { addToCart } = useCartContext();
+export const useAddToCart = ({ productId }: { productId: number }) => {
+    const { addToCart, cartItems } = useCartContext();
+    const itemInCart: CartItemsType | undefined = useMemo(() => {
+        return cartItems.find(({ id }) => id === productId);
+    }, [cartItems, productId]);
+
+    const [quantity, setQuantity] = useState<number>(itemInCart?.quantity ?? 1);
 
     const onAddToCart = useCallback(
-        (pId: number) => {
-            addToCart(pId, quantity);
+        (pId: number, price: number) => {
+            addToCart(pId, quantity, price);
+            toast.success('Added to cart');
         },
         [addToCart, quantity]
     );
@@ -34,5 +41,12 @@ export const useAddToCart = () => {
         }
     }, []);
 
-    return { quantity, onIncrement, onDecrement, onQuantityChange, onAddToCart };
+    return {
+        quantity,
+        onIncrement,
+        onDecrement,
+        onQuantityChange,
+        onAddToCart,
+        hasAlreadyAdded: Boolean(itemInCart),
+    };
 };

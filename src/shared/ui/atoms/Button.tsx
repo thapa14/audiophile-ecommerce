@@ -11,7 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'contained' | 'outlined' | 'text';
 }
 
-export default function Button({
+export function Button({
     children,
     variant = 'contained',
     icon,

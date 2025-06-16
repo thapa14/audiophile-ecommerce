@@ -1,13 +1,10 @@
-import { useCartContext } from 'entities/cart';
 import type { Product } from 'entities/product';
 import type { FC } from 'react';
 import allProducts from 'shared/data.json';
 import { useResponsiveImage } from 'shared/lib/hooks';
-import { QuantityCounter } from 'shared/ui';
 import type { CartItemProps } from 'widgets/cart/ui/CartItem.types';
 
 export const CartItem: FC<CartItemProps> = ({ data }) => {
-    const { onProductQuantityIncrement, onProductQuantityDecrement } = useCartContext();
     const productWithDetails = allProducts.find((item: Product) => item.id === data.id) as Product;
     const { bgImage } = useResponsiveImage(productWithDetails.image);
     return (
@@ -21,14 +18,9 @@ export const CartItem: FC<CartItemProps> = ({ data }) => {
                 <p className="font-bold">{productWithDetails.name}</p>
                 <p className="text-sm tracking-normal opacity-50">$ {productWithDetails.price}</p>
             </div>
-            <QuantityCounter
-                className="h-8 w-24 shrink-0"
-                quantity={data.quantity}
-                onIncrement={() => onProductQuantityIncrement(data.id)}
-                onDecrement={() => onProductQuantityDecrement(data.id)}
-                onQuantityChange={() => {}}
-                inputDisabled={true}
-            />
+            <div>
+                <p className="opacity-50">X{data.quantity}</p>
+            </div>
         </div>
     );
 };

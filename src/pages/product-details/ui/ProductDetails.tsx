@@ -7,7 +7,7 @@ import { ProductCategoryList } from 'widgets/product-category-list';
 import { YouMayAlsoLike } from 'widgets/you-may-also-like';
 
 export const ProductDetails: FC = () => {
-    const { productData, loading } = useProductDetails();
+    const { productData, loading, onBackClick } = useProductDetails();
 
     if (loading) {
         return (
@@ -28,7 +28,9 @@ export const ProductDetails: FC = () => {
     return (
         <div className="container pt-[90px]">
             <div className="mt-4 mb-6 flex justify-start md:mt-20 md:mb-14">
-                <Button variant="text">Go Back</Button>
+                <Button variant="text" onClick={onBackClick}>
+                    Go Back
+                </Button>
             </div>
             <ProductDetailsHead
                 id={productData.id}
