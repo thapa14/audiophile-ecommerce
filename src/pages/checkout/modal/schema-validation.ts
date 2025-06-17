@@ -25,17 +25,22 @@ export const schema = Yup.object().shape({
         .label('Country')
         .required('Required!')
         .matches(alphabetSpaceRegex, 'Wrong format'),
-    paymentType: Yup.string().label('Payment Type').required('Required!'),
+    paymentType: Yup.mixed<paymentTypes>()
+        .label('Payment Type')
+        .oneOf([paymentTypes.eMoney, paymentTypes.cod])
+        .required('Required!'),
     eMoneyNumber: Yup.string()
         .label('EMoney Number')
         .when('paymentType', {
             is: paymentTypes.eMoney,
             then: schema => schema.required('Required!').matches(emailRegex, 'Wrong format'),
+            otherwise: schema => schema.optional(),
         }),
     eMoneyPin: Yup.string()
         .label('EMoneyPin')
         .when('paymentType', {
             is: paymentTypes.eMoney,
             then: schema => schema.required('Required!').matches(emailRegex, 'Wrong format'),
+            otherwise: schema => schema.optional(),
         }),
 });

@@ -1,21 +1,20 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { getCartTotal, useCartContext } from 'entities/cart';
 import { calculateGrandTotal } from 'entities/cart/lib/calculateGrandTotal';
 import { calculateVat } from 'entities/cart/lib/calculateVat';
 import { BillingForm, PaymentForm, ShippingForm } from 'features/checkout';
 import { defaultValues } from 'pages/checkout/modal/defaults';
 import { schema } from 'pages/checkout/modal/schema-validation';
-import type { FormTypes } from 'pages/checkout/modal/types';
 import { CartItem } from 'pages/checkout/ui/CartItem';
 import type { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { Button } from 'shared/ui';
-import { yupResolver } from '@hookform/resolvers/yup';
 
 export const Checkout: FC = () => {
     const navigate = useNavigate();
     const { cartItems } = useCartContext();
-    const methods = useForm<FormTypes>({
+    const methods = useForm({
         defaultValues: defaultValues,
         resolver: yupResolver(schema),
     });
@@ -56,7 +55,7 @@ export const Checkout: FC = () => {
 
                         <div className="bg-whitesmoke flex flex-col items-start gap-y-8 rounded-lg p-6 lg:col-span-4">
                             <h6 className="uppercase">Summary</h6>
-                            <div className="flex flex-col gap-y-6">
+                            <div className="flex w-full flex-col gap-y-6">
                                 {cartItems.map(item => (
                                     <CartItem key={item.id} data={item} />
                                 ))}

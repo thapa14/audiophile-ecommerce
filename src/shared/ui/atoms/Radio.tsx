@@ -1,13 +1,14 @@
-import clsx from 'clsx';
 import type { FC, InputHTMLAttributes } from 'react';
 import { type FieldError, useFormContext } from 'react-hook-form';
+
+type Options = string | { label: string; value: string | number };
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
     label?: string;
     placeholder?: string;
     className?: string;
-    options: string[] | { label: string; value: string | number }[];
+    options: Options[];
 }
 
 export const Radio: FC<InputProps> = ({ name, label, placeholder = '', options }) => {
@@ -36,7 +37,7 @@ export const Radio: FC<InputProps> = ({ name, label, placeholder = '', options }
                         <input
                             id={typeof option === 'string' ? option : option.label}
                             type="radio"
-                            value={typeof option === 'string' ? option : option.label}
+                            value={typeof option === 'string' ? option : option.value}
                             placeholder={placeholder}
                             {...register(name)}
                             className="accent-peru scale-150"

@@ -9,6 +9,8 @@ export const PaymentForm: FC = () => {
     const paymentType = watch('paymentType');
     const paymentOptions = Object.values(paymentTypes);
 
+    console.log(paymentType);
+
     return (
         <div className="flex flex-col gap-y-6">
             <p className="sub-title text-peru uppercase">Payment Details</p>

@@ -1,7 +1,7 @@
 import { usePageData } from 'pages/product-category';
 import { ProductInfoCard } from 'pages/product-category/ui/ProductInfoCard';
 import type { FC } from 'react';
-import { ProductCategoryList } from 'widgets/product-category-list';
+import { ProductCategoryList } from 'features/product-category-list';
 
 export const CategoryPage: FC = () => {
     const { pageData, category } = usePageData();

@@ -1,6 +1,6 @@
 import { type FC, useState } from 'react';
 import { Button } from 'shared/ui';
-import type { ProductCategory } from 'widgets/product-category-list/ui/CategoryCard.types';
+import type { ProductCategory } from 'features/product-category-list/ui/CategoryCard.types';
 
 const CategoryCard: FC<ProductCategory> = ({ title, image, altName, shopNowClick }) => {
     const [isHovered, setHovered] = useState(false);
@@ -10,6 +10,7 @@ const CategoryCard: FC<ProductCategory> = ({ title, image, altName, shopNowClick
             className="relative flex w-full cursor-pointer flex-col items-center gap-4 pb-6 md:gap-4"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            onClick={shopNowClick}
         >
             <div className="relative z-20 w-1/4 pb-4 md:w-20 md:pb-5 lg:w-1/3">
                 <img className="w-full drop-shadow-sm" src={image} alt={altName} />
@@ -20,7 +21,6 @@ const CategoryCard: FC<ProductCategory> = ({ title, image, altName, shopNowClick
                 className={`z-20 uppercase ${isHovered ? 'text-peru' : 'text-gray-500'}`}
                 variant="text"
                 icon="weui:arrow-filled"
-                onClick={shopNowClick}
             >
                 Shop
             </Button>

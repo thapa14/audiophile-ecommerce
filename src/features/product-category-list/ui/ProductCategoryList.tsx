@@ -1,21 +1,23 @@
 import type { FC } from 'react';
 import { useNavigate } from 'react-router';
-import headphone from 'shared/assets/home/mobile/product-headphone-preview.svg';
-import speaker from 'shared/assets/home/mobile/product-speaker-preview.svg';
-import earphone from 'shared/assets/home/mobile/product-earphone-preview.svg';
-import { CategoryCard } from 'widgets/product-category-list';
+import earphone from '/assets/home/mobile/product-earphone-preview.svg';
+import headphone from '/assets/home/mobile/product-headphone-preview.svg';
+import speaker from '/assets/home/mobile/product-speaker-preview.svg';
+import { CategoryCard } from 'features/product-category-list';
+import type { ProductCategoryListProps } from 'features/product-category-list/ui/ProductCategoryList.types';
 
-const ProductCategoryList: FC = () => {
+const ProductCategoryList: FC<ProductCategoryListProps> = ({ toggleMenu }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="container flex w-full flex-col flex-nowrap gap-y-6 md:flex-row md:gap-x-2.5 lg:gap-x-8">
+        <div className="container flex flex-col flex-nowrap gap-y-6 md:flex-row md:gap-x-2.5 lg:gap-x-8">
             <CategoryCard
                 title="Headphones"
                 image={headphone}
                 altName="Headphones"
                 shopNowClick={() => {
                     navigate('/headphones');
+                    if (typeof toggleMenu === 'function') toggleMenu();
                 }}
             />
             <CategoryCard
@@ -24,6 +26,7 @@ const ProductCategoryList: FC = () => {
                 altName="Speakers"
                 shopNowClick={() => {
                     navigate('/speakers');
+                    if (typeof toggleMenu === 'function') toggleMenu();
                 }}
             />
             <CategoryCard
@@ -32,6 +35,7 @@ const ProductCategoryList: FC = () => {
                 altName="Earphones"
                 shopNowClick={() => {
                     navigate('/earphones');
+                    if (typeof toggleMenu === 'function') toggleMenu();
                 }}
             />
         </div>

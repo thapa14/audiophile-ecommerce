@@ -15,7 +15,7 @@ export const Cart: FC = () => {
             {/* Stop propagation to prevent triggering onClickOutside when clicking the child */}
             <div className="container flex h-full justify-end pt-6">
                 <div
-                    className="relative h-max max-h-125 w-full overflow-scroll rounded-lg bg-white px-6 pb-6 md:w-95"
+                    className="relative h-max max-h-125 w-full overflow-x-hidden rounded-lg bg-white px-6 pb-6 md:w-95"
                     onClick={e => e.stopPropagation()}
                 >
                     <div className="sticky top-0 right-0 left-0 z-50 flex w-full justify-between bg-white py-6 md:py-8">

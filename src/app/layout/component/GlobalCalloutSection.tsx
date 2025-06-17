@@ -1,9 +1,9 @@
 import type { FC } from 'react';
-import desktopCallout from 'shared/assets/shared/desktop/image-best-gear.jpg';
-import mobileCallout from 'shared/assets/shared/mobile/image-best-gear.jpg';
-import tabletCallout from 'shared/assets/shared/tablet/image-best-gear.jpg';
+import desktopCallout from '/assets/shared/desktop/image-best-gear.jpg';
+import mobileCallout from '/assets/shared/mobile/image-best-gear.jpg';
+import tabletCallout from '/assets/shared/tablet/image-best-gear.jpg';
 import { useResponsiveImage } from 'shared/lib/hooks';
-import fallbackImage from 'shared/assets/no-image-icon-23492.png';
+import fallbackImage from '/assets/no-image-icon-23492.png';
 
 export const GlobalCalloutSection: FC = () => {
     const { bgImage } = useResponsiveImage({
