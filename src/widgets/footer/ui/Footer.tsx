@@ -1,6 +1,8 @@
 import { Icon } from '@iconify/react';
 import type { FC } from 'react';
-import logo from 'shared/assets/logo/logo.svg';
+import { Link } from 'react-router';
+import logo from '/assets/logo/logo.svg';
+import { navEnums } from 'shared/config';
 
 const Footer: FC = () => {
     return (
@@ -11,18 +13,19 @@ const Footer: FC = () => {
                 </div>
                 <div className="order-2 col-span-2 flex flex-col items-center justify-center gap-4 uppercase md:flex-row md:justify-start lg:col-span-1 lg:justify-end">
                     {/*// <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->*/}
-                    <a href="#" className="sub-title rounded-md" aria-current="page">
-                        Dashboard
-                    </a>
-                    <a href="#" className="sub-title rounded-md">
-                        Team
-                    </a>
-                    <a href="#" className="sub-title rounded-md">
-                        Projects
-                    </a>
-                    <a href="#" className="sub-title rounded-md">
-                        Calendar
-                    </a>
+
+                    {Object.entries(navEnums).map(([name, link], index) => {
+                        return (
+                            <Link
+                                to={link}
+                                className="sub-title hover:text-peru rounded-md"
+                                aria-current="page"
+                                key={index}
+                            >
+                                {name}
+                            </Link>
+                        );
+                    })}
                 </div>
                 <p className="order-3 col-span-2 text-center opacity-50 md:text-start lg:col-span-1">
                     Audiophile is an all in one stop to fulfill your audio needs. We're a small team

@@ -1,3 +1,5 @@
+import { paymentTypes } from 'pages/checkout/modal/types';
+
 export const defaultValues = {
     name: '',
     email: '',
@@ -6,7 +8,7 @@ export const defaultValues = {
     zipCode: '',
     city: '',
     country: '',
-    paymentType: '',
+    paymentType: paymentTypes.cod,
     eMoneyNumber: '',
     eMoneyPin: '',
 };

@@ -3,7 +3,7 @@ import { ProductDetailsHead } from 'pages/product-details/ui/ProductDetailsHead'
 import type { FC } from 'react';
 import { Button } from 'shared/ui';
 import { Image } from 'shared/ui/Image';
-import { ProductCategoryList } from 'widgets/product-category-list';
+import { ProductCategoryList } from 'features/product-category-list';
 import { YouMayAlsoLike } from 'widgets/you-may-also-like';
 
 export const ProductDetails: FC = () => {

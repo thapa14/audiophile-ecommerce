@@ -1,14 +1,15 @@
-import type { FC } from 'react';
-import desktop from 'shared/assets/home/desktop/image-speaker-zx9.png';
-import backgroundImage from 'shared/assets/home/desktop/pattern-circles.svg';
-import mobile from 'shared/assets/home/mobile/image-speaker-zx9.png';
-import tablet from 'shared/assets/home/tablet/image-speaker-zx9.png';
+import { useNavigateToProductDetails } from 'features/view-product';
+import { type FC } from 'react';
+import desktop from '/assets/home/desktop/image-speaker-zx9.png';
+import backgroundImage from '/assets/home/desktop/pattern-circles.svg';
+import mobile from '/assets/home/mobile/image-speaker-zx9.png';
+import tablet from '/assets/home/tablet/image-speaker-zx9.png';
 import { useResponsiveImage } from 'shared/lib/hooks';
 import { DynamicInfoBlock } from 'shared/ui';
 
 const FeatureProductBanner: FC = () => {
     const { bgImage: speaker } = useResponsiveImage({ mobile, tablet, desktop });
-    // const productPageNavigation = useNavigateToProductDetails();
+    const navigateToProductDetails = useNavigateToProductDetails();
 
     return (
         <div className="bg-peru relative container h-[600px] overflow-hidden rounded-lg text-white md:h-[720px] lg:h-[560px]">
@@ -32,6 +33,12 @@ const FeatureProductBanner: FC = () => {
                     <DynamicInfoBlock.Button
                         variant="contained"
                         className="hover:!bg-quartz !bg-black !text-white"
+                        onClick={() => {
+                            navigateToProductDetails({
+                                pathname: '/product-details',
+                                search: '?slug=zx9-speaker',
+                            });
+                        }}
                     >
                         See product
                     </DynamicInfoBlock.Button>

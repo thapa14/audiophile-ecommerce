@@ -1,8 +1,8 @@
 import { SeeProductButton } from 'features/view-product';
 import type { FC } from 'react';
-import desktop from 'shared/assets/home/desktop/image-hero.jpg';
-import mobile from 'shared/assets/home/mobile/image-hero.jpg';
-import tablet from 'shared/assets/home/tablet/image-hero.jpg';
+import desktop from '/assets/home/desktop/image-hero.jpg';
+import mobile from '/assets/home/mobile/image-hero.jpg';
+import tablet from '/assets/home/tablet/image-hero.jpg';
 import { useResponsiveImage } from 'shared/lib/hooks';
 import { DynamicInfoBlock } from 'shared/ui/DynamicInfoBlock';
 

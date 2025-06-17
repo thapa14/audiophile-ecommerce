@@ -1,10 +1,10 @@
 import { FeatureProductBanner, Hero, SecondaryProductBanner, TextOnlyBanner } from 'pages/home/ui';
 import type { FC } from 'react';
-import desktop from 'shared/assets/home/desktop/image-earphones-yx1.jpg';
-import mobile from 'shared/assets/home/mobile/image-earphones-yx1.jpg';
-import tablet from 'shared/assets/home/tablet/image-earphones-yx1.jpg';
+import desktop from '/assets/home/desktop/image-earphones-yx1.jpg';
+import mobile from '/assets/home/mobile/image-earphones-yx1.jpg';
+import tablet from '/assets/home/tablet/image-earphones-yx1.jpg';
 import { BackgroundImageContainer } from 'shared/ui';
-import { ProductCategoryList } from 'widgets/product-category-list';
+import { ProductCategoryList } from 'features/product-category-list';
 
 const Home: FC = () => {
     return (

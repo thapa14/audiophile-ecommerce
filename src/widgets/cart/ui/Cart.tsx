@@ -1,4 +1,4 @@
-import { getCartTotal, useCartContext } from 'entities/cart';
+import { calculateCartTotal, useCartContext } from 'entities/cart';
 import type { FC } from 'react';
 import { Button } from 'shared/ui';
 import { useCart } from 'widgets/cart/modal/useCart';
@@ -8,14 +8,14 @@ export const Cart: FC = () => {
     const { onCheckout } = useCart();
     const { cartItems, onRemoveAll } = useCartContext();
     const cartLength = cartItems.length;
-    const cartTotal = getCartTotal(cartItems);
+    const cartTotal = calculateCartTotal(cartItems);
 
     return (
         <div className="fixed inset-0 top-[90px] z-50 bg-black/50 backdrop-opacity-50">
             {/* Stop propagation to prevent triggering onClickOutside when clicking the child */}
             <div className="container flex h-full justify-end pt-6">
                 <div
-                    className="relative h-max max-h-125 w-full overflow-scroll rounded-lg bg-white px-6 pb-6 md:w-95"
+                    className="relative h-max max-h-125 w-full overflow-x-hidden rounded-lg bg-white px-6 pb-6 md:w-95"
                     onClick={e => e.stopPropagation()}
                 >
                     <div className="sticky top-0 right-0 left-0 z-50 flex w-full justify-between bg-white py-6 md:py-8">

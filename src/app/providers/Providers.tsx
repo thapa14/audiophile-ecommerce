@@ -1,5 +1,5 @@
 import ToastContainerProvider from 'app/providers/ToastProvider';
-import { CartProvider } from 'entities/cart/modal/CartProvider';
+import { CartProvider } from 'entities/cart';
 import { type ReactNode } from 'react';
 
 type ProvidersCheck = {

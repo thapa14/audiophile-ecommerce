@@ -1,8 +1,8 @@
-import desktop from 'shared/assets/home/desktop/image-speaker-zx7.jpg';
-import mobile from 'shared/assets/home/mobile/image-speaker-zx7.jpg';
-import tablet from 'shared/assets/home/tablet/image-speaker-zx7.jpg';
+import { SeeProductButton } from 'features/view-product';
+import desktop from '/assets/home/desktop/image-speaker-zx7.jpg';
+import mobile from '/assets/home/mobile/image-speaker-zx7.jpg';
+import tablet from '/assets/home/tablet/image-speaker-zx7.jpg';
 import { useResponsiveImage } from 'shared/lib/hooks';
-import { Button } from 'shared/ui';
 
 const SecondaryProductBanner = () => {
     const { bgImage } = useResponsiveImage({ mobile, tablet, desktop });
@@ -15,9 +15,12 @@ const SecondaryProductBanner = () => {
             <div className="z-30 flex h-full w-full items-center justify-start p-6 lg:pl-24">
                 <div className="flex flex-col items-start gap-y-8 text-white lg:items-start">
                     <h4 className="text-black">ZX7 SPEAKER</h4>
-                    <Button variant="outlined" className="uppercase">
-                        See product
-                    </Button>
+                    <SeeProductButton
+                        variant="outlined"
+                        className="uppercase"
+                        slug="ZX7 Speaker"
+                        pId={5}
+                    />
                 </div>
             </div>
         </div>
