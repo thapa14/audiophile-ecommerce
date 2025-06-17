@@ -1,4 +1,4 @@
-import { paymentTypes } from 'pages/checkout/modal/types';
+import { paymentTypes } from 'features/checkout';
 import { addressRegex, alphabetSpaceRegex, emailRegex } from 'shared/lib';
 import * as Yup from 'yup';
 

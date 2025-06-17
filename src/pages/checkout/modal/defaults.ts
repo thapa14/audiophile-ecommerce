@@ -1,4 +1,4 @@
-import { paymentTypes } from 'pages/checkout/modal/types';
+import { paymentTypes } from 'features/checkout';
 
 export const defaultValues = {
     name: '',
