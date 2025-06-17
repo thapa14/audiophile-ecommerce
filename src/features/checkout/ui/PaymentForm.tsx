@@ -1,15 +1,13 @@
-import { paymentTypes } from 'pages/checkout/modal/types';
+import { paymentTypes } from '..';
 import type { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Input } from 'shared/ui/atoms';
-import { Radio } from 'shared/ui/atoms/Radio';
+import { Input } from 'shared/ui';
+import { Radio } from 'shared/ui';
 
 export const PaymentForm: FC = () => {
     const { watch } = useFormContext();
     const paymentType = watch('paymentType');
     const paymentOptions = Object.values(paymentTypes);
-
-    console.log(paymentType);
 
     return (
         <div className="flex flex-col gap-y-6">

@@ -1,5 +1,5 @@
+import type { CartItemsType } from 'entities/cart';
 import { useCartContext } from 'entities/cart';
-import type { CartItemsType } from 'entities/cart/modal/types';
 import { type ChangeEventHandler, useCallback, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 

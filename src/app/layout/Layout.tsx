@@ -3,7 +3,7 @@ import ScrollToTop from 'app/layout/ScrollToTop';
 import { useCartContext } from 'entities/cart';
 import type { ReactNode } from 'react';
 import { Outlet } from 'react-router';
-import { Cart } from 'widgets/cart/ui/Cart';
+import { Cart } from 'widgets/cart';
 import { Footer } from 'widgets/footer';
 import { Header } from 'widgets/header';
 

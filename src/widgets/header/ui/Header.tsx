@@ -1,10 +1,10 @@
 import { Icon } from '@iconify/react';
-import { useCartContext } from 'entities/cart/modal/cartContext';
+import { useCartContext } from 'entities/cart';
 import { ProductCategoryList } from 'features/product-category-list';
 import { type FC } from 'react';
 import { Link } from 'react-router';
 import logo from '/assets/logo/logo.svg';
-import { navEnums } from 'shared/config/navEnums';
+import { navEnums } from 'shared/config';
 import { useHeader } from 'widgets/header/modal';
 
 const Header: FC = () => {

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Input } from 'shared/ui/atoms/Input';
+import { Input } from 'shared/ui';
 
 export const BillingForm: FC = () => {
     return (

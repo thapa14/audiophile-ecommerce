@@ -2,7 +2,7 @@ import type { Product } from 'entities/product';
 import type { FC } from 'react';
 import allProducts from 'shared/data.json';
 import { useResponsiveImage } from 'shared/lib/hooks';
-import type { CartItemProps } from 'widgets/cart/ui/CartItem.types';
+import type { CartItemProps } from 'widgets/cart';
 
 export const CartItem: FC<CartItemProps> = ({ data }) => {
     const productWithDetails = allProducts.find((item: Product) => item.id === data.id) as Product;

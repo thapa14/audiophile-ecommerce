@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import type { FC } from 'react';
 import { Link } from 'react-router';
 import logo from '/assets/logo/logo.svg';
-import { navEnums } from 'shared/config/navEnums';
+import { navEnums } from 'shared/config';
 
 const Footer: FC = () => {
     return (

@@ -1,4 +1,4 @@
-import { getCartTotal, useCartContext } from 'entities/cart';
+import { calculateCartTotal, useCartContext } from 'entities/cart';
 import type { FC } from 'react';
 import { Button } from 'shared/ui';
 import { useCart } from 'widgets/cart/modal/useCart';
@@ -8,7 +8,7 @@ export const Cart: FC = () => {
     const { onCheckout } = useCart();
     const { cartItems, onRemoveAll } = useCartContext();
     const cartLength = cartItems.length;
-    const cartTotal = getCartTotal(cartItems);
+    const cartTotal = calculateCartTotal(cartItems);
 
     return (
         <div className="fixed inset-0 top-[90px] z-50 bg-black/50 backdrop-opacity-50">

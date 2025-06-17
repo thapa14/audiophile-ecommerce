@@ -1,7 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { getCartTotal, useCartContext } from 'entities/cart';
-import { calculateGrandTotal } from 'entities/cart/lib/calculateGrandTotal';
-import { calculateVat } from 'entities/cart/lib/calculateVat';
+import {
+    calculateCartTotal,
+    calculateGrandTotal,
+    calculateVat,
+    useCartContext,
+} from 'entities/cart';
 import { BillingForm, PaymentForm, ShippingForm } from 'features/checkout';
 import { defaultValues } from 'pages/checkout/modal/defaults';
 import { schema } from 'pages/checkout/modal/schema-validation';
@@ -18,7 +21,7 @@ export const Checkout: FC = () => {
         defaultValues: defaultValues,
         resolver: yupResolver(schema),
     });
-    const cartTotal = getCartTotal(cartItems);
+    const cartTotal = calculateCartTotal(cartItems);
     const vat = calculateVat(cartTotal);
     const grandTotal = calculateGrandTotal(cartTotal, 50, vat);
 
