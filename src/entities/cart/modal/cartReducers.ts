@@ -5,12 +5,13 @@ import {
     QUANTITY_DECREMENT,
     QUANTITY_INCREMENT,
     REMOVE_ALL_ITEMS,
+    RESET_ALL,
     SHOW_CART,
 } from 'entities/cart/modal/cartActions';
+import { cartInitials } from 'entities/cart/modal/cartDefaults';
 import type { ActionType, CartInitialProps } from 'entities/cart/modal/types';
 
 export const reducer = (state: CartInitialProps, action: ActionType): CartInitialProps => {
-    console.log('reducer');
     if (action.type === SHOW_CART) {
         return { ...state, isCartOpened: action.payload };
     }
@@ -34,6 +35,9 @@ export const reducer = (state: CartInitialProps, action: ActionType): CartInitia
             ...state,
             cartItems: changeProductQuantity(state.cartItems, action.payload, 'DECREMENT'),
         };
+    }
+    if (action.type === RESET_ALL) {
+        return cartInitials;
     }
     return {} as CartInitialProps;
 };

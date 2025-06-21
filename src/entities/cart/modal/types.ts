@@ -4,6 +4,7 @@ import {
     QUANTITY_DECREMENT,
     QUANTITY_INCREMENT,
     REMOVE_ALL_ITEMS,
+    RESET_ALL,
     SHOW_CART,
 } from 'entities/cart/modal/cartActions';
 
@@ -30,6 +31,7 @@ export type CartContextTypes = CartInitialProps & {
     onRemoveAll: () => void;
     onProductQuantityIncrement: (pId: number) => void;
     onProductQuantityDecrement: (pId: number) => void;
+    onResetAll: () => void;
 };
 
 /**
@@ -40,5 +42,6 @@ export type ActionType =
     | { type: typeof HIDE_CART; payload: boolean }
     | { type: typeof ADD_TO_CART; payload: CartItemsType }
     | { type: typeof REMOVE_ALL_ITEMS }
+    | { type: typeof RESET_ALL }
     | { type: typeof QUANTITY_INCREMENT; payload: number }
     | { type: typeof QUANTITY_DECREMENT; payload: number };

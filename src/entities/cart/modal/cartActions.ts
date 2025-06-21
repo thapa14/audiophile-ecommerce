@@ -4,3 +4,4 @@ export const ADD_TO_CART = 'ADD_TO_CART' as const;
 export const REMOVE_ALL_ITEMS = 'REMOVE_ALL_ITEMS' as const;
 export const QUANTITY_INCREMENT = 'QUANTITY_INCREMENT' as const;
 export const QUANTITY_DECREMENT = 'QUANTITY_DECREMENT' as const;
+export const RESET_ALL = 'RESET_ALL' as const;

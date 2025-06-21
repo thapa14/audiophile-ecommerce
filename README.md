@@ -1,54 +1,83 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Audiophile e-commerce website solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* [Overview](#overview)
 
-## Expanding the ESLint configuration
+  * [The challenge](#the-challenge)
+  * [Links](#links)
+* [My process](#my-process)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  * [Built with](#built-with)
+  * [What I learned](#what-i-learned)
+  * [Continued development](#continued-development)
+  * [Useful resources](#useful-resources)
+* [Author](#author)
+* [Acknowledgments](#acknowledgments)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Overview
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### The challenge
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Users should be able to:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+* View the optimal layout for the app depending on their device's screen size
+* See hover states for all interactive elements on the page
+* Add/Remove products from the cart
+* Edit product quantities in the cart
+* Fill in all fields in the checkout
+* Receive form validations if fields are missed or incorrect during checkout
+* See correct checkout totals depending on the products in the cart
+
+  * Shipping always adds \$50 to the order
+  * VAT is calculated as 20% of the product total, excluding shipping
+* See an order confirmation modal after checking out with an order summary
+
+### Links
+
+* **Solution URL**: [https://github.com/thapa14/audiophile-ecommerce](https://github.com/thapa14/audiophile-ecommerce)
+* **Live Site URL**: [https://thapa-ecommerce.netlify.app](https://thapa-ecommerce.netlify.app)
+
+## My process
+
+### Built with
+
+* **React** & **Vite**
+* **Tailwind CSS** – utility-first styling
+* **Feature-Sliced Design (FSD) architecture** with `steiger`
+* **Context API** – for managing cart and product data
+* **TypeScript** – for strong typing and scalability
+* **ESLint & Prettier** – for code quality and consistency
+
+### What I learned
+
+This was my first project built with **FSD**, and it transformed the way I think about front-end architecture. I have also used **TypeScript** – it was quite a fun and eye-opening challenge for me.
+
+* **Separation of concerns** – clear boundaries between `entities`, `features`, `widgets`, `pages`, and `app` layers dramatically improved code readability.
+* **Code reusability** – grouping logic, UI, and styles by feature rather than by technology made it trivial to reuse components across the app.
+* **Avoiding circular dependencies** – using FSD guidelines (only import “down” the hierarchy) eliminated hidden coupling issues.
+* **Responsive design** – Tailwind’s mobile-first utilities let me ship fully responsive layouts with minimal custom CSS.
+* **Context API with TypeScript** – Handling shared state across components using Context API was a challenging but rewarding experience, especially in defining and enforcing strict types.
+
+### Continued development
+
+* **Write test cases** using Vitest and Cypress to ensure application stability.
+* **Make cart persistence more robust** with custom hooks and fallback checks.
+* **Add support for multiple currencies and languages** to enhance international user experience.
+
+### Useful resources
+
+* **Feature-Sliced Design** – [https://feature-sliced.github.io/documentation/](https://feature-sliced.github.io/documentation/) (official docs)
+* **Tailwind CSS docs** – [https://tailwindcss.com/docs](https://tailwindcss.com/docs)
+
+## Author
+
+* **Name** – Pankaj Thapa
+* **Frontend Mentor** – [@thapa14](https://www.frontendmentor.io/profile/thapa14)
+* **LinkedIn** – [https://www.linkedin.com/in/pankaj-thapa-a06543207](https://www.linkedin.com/in/pankaj-thapa-a06543207)
+
+## Acknowledgments
+
+Big thanks to the Frontend Mentor community for feedback and guidance, and to the creators of FSD for their excellent documentation. Also, a special thanks to the FSD community for their support and guidance throughout the process.

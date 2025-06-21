@@ -9,12 +9,14 @@ import { BillingForm, PaymentForm, ShippingForm } from 'features/checkout';
 import { defaultValues } from 'pages/checkout/modal/defaults';
 import { schema } from 'pages/checkout/modal/schema-validation';
 import { CartItem } from 'pages/checkout/ui/CartItem';
-import type { FC } from 'react';
+import { ConfirmationDialog } from 'pages/checkout/ui/ConfirmationDialog';
+import { type FC, useCallback, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { Button } from 'shared/ui';
 
 export const Checkout: FC = () => {
+    const [showOrderConfirmation, setShowOrderConfirmation] = useState(false);
     const navigate = useNavigate();
     const { cartItems } = useCartContext();
     const methods = useForm({
@@ -24,6 +26,14 @@ export const Checkout: FC = () => {
     const cartTotal = calculateCartTotal(cartItems);
     const vat = calculateVat(cartTotal);
     const grandTotal = calculateGrandTotal(cartTotal, 50, vat);
+
+    const submit = useCallback(() => {
+        setShowOrderConfirmation(true);
+    }, []);
+
+    const closeConfirmationModal = useCallback(() => {
+        setShowOrderConfirmation(false);
+    }, []);
 
     return (
         <div className="container pt-[90px]">
@@ -39,12 +49,7 @@ export const Checkout: FC = () => {
                 </Button>
             </div>
             <FormProvider {...methods}>
-                <form
-                    onSubmit={methods.handleSubmit(
-                        data => console.log(data),
-                        error => console.log(error)
-                    )}
-                >
+                <form onSubmit={methods.handleSubmit(submit, error => console.log(error))}>
                     <div className="grid grid-cols-1 items-start gap-y-8 lg:grid-cols-12 lg:gap-x-6">
                         <div className="bg-whitesmoke rounded-lg p-6 lg:col-span-8">
                             <h3 className="mb-8 uppercase">Checkout</h3>
@@ -60,7 +65,7 @@ export const Checkout: FC = () => {
                             <h6 className="uppercase">Summary</h6>
                             <div className="flex w-full flex-col gap-y-6">
                                 {cartItems.map(item => (
-                                    <CartItem key={item.id} data={item} />
+                                    <CartItem key={item?.id} data={item} />
                                 ))}
                             </div>
                             <div className="flex w-full flex-col gap-y-2">
@@ -88,6 +93,11 @@ export const Checkout: FC = () => {
                     </div>
                 </form>
             </FormProvider>
+
+            {showOrderConfirmation && (
+                <ConfirmationDialog grandTotal={grandTotal} closeModal={closeConfirmationModal} />
+            )}
+            {/*<ConfirmationDialog  />*/}
         </div>
     );
 };

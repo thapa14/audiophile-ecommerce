@@ -9,7 +9,7 @@ export const BillingForm: FC = () => {
             <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-4">
                 <Input name="name" label="Name" placeholder="Pankaj" />
                 <Input name="email" label="Email Address" placeholder="pankajthapa010@gmail.com" />
-                <Input name="phone" label="Phone Number" placeholder="+91 897-937-4476" />
+                <Input name="phone" label="Phone Number" placeholder="08979374476" />
             </div>
         </div>
     );
