@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { Button } from 'shared/ui';
 import { Image } from 'shared/ui/Image';
 import { ProductCategoryList } from 'features/product-category-list';
+import { PageLoader } from 'shared/ui/PageLoader';
 import { YouMayAlsoLike } from 'widgets/you-may-also-like';
 
 export const ProductDetails: FC = () => {
@@ -11,8 +12,8 @@ export const ProductDetails: FC = () => {
 
     if (loading) {
         return (
-            <div className="container pt-[90px]">
-                <h6>Loading...</h6>
+            <div className="pt-[90px]">
+                <PageLoader />
             </div>
         );
     }

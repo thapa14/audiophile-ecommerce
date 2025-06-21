@@ -1,8 +1,5 @@
 import { Layout } from 'app/layout/Layout';
-import { Checkout } from 'pages/checkout';
-import { Home } from 'pages/home';
-import { CategoryPage } from 'pages/product-category';
-import { ProductDetails } from 'pages/product-details';
+import { CategoryPage, Checkout, Home, ProductDetails } from 'app/routers/elements';
 import { createBrowserRouter } from 'react-router';
 
 const routes = createBrowserRouter([

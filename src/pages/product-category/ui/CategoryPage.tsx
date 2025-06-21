@@ -2,9 +2,18 @@ import { usePageData } from 'pages/product-category';
 import { ProductInfoCard } from 'pages/product-category/ui/ProductInfoCard';
 import type { FC } from 'react';
 import { ProductCategoryList } from 'features/product-category-list';
+import { PageLoader } from 'shared/ui/PageLoader';
 
 export const CategoryPage: FC = () => {
-    const { pageData, category } = usePageData();
+    const { pageData, category, loading } = usePageData();
+
+    if (loading) {
+        return (
+            <div className="pt-[90px]">
+                <PageLoader />
+            </div>
+        );
+    }
     return (
         <div>
             <div className="flex h-48 w-full items-center justify-center bg-black pt-[90px] text-white sm:h-84">
