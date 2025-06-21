@@ -4,4 +4,5 @@ export interface UsePageDataResult {
     pageData: ProductPageType[];
     error: Error | null;
     category: string;
+    loading: boolean;
 }

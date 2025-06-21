@@ -9,7 +9,9 @@ import { useHeader } from 'widgets/header/modal';
 
 const Header: FC = () => {
     const { isMenuOpened, toggleMenu, setIsMenuOpened, navigateToHome } = useHeader();
-    const { showCart } = useCartContext();
+    const { showCart, cartItems } = useCartContext();
+
+    const cartLength = cartItems.length;
 
     return (
         <div className="border-stroke fixed top-0 z-50 flex h-[90px] w-full items-center justify-between border-b-[0.5px] bg-black text-white">
@@ -86,6 +88,11 @@ const Header: FC = () => {
                                     }}
                                 >
                                     <Icon icon="mdi-light:cart" width="24" height="24" />
+                                    {Boolean(cartLength) && (
+                                        <div className="bg-peru absolute -top-1 -right-1 h-4 w-4 rounded-full text-xs font-bold text-white">
+                                            {cartLength}
+                                        </div>
+                                    )}
                                 </button>
                             </div>
                         </div>
