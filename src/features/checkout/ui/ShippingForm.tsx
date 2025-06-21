@@ -15,12 +15,7 @@ export const ShippingForm: FC = () => {
                 />
                 <Input name="zipCode" label="Zip Code" placeholder="201301" />
                 <Input name="city" label="City" placeholder="Noida" />
-                <Input
-                    name="country"
-                    label="Country"
-                    placeholder="India"
-                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                />
+                <Input name="country" label="Country" placeholder="India" />
             </div>
         </div>
     );

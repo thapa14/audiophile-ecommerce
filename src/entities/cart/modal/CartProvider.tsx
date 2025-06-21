@@ -4,17 +4,13 @@ import {
     QUANTITY_DECREMENT,
     QUANTITY_INCREMENT,
     REMOVE_ALL_ITEMS,
+    RESET_ALL,
     SHOW_CART,
 } from 'entities/cart/modal/cartActions';
 import { CartContext } from 'entities/cart/modal/cartContext';
+import { cartInitials } from 'entities/cart/modal/cartDefaults';
 import { reducer } from 'entities/cart/modal/cartReducers';
-import type { CartInitialProps } from 'entities/cart/modal/types';
 import { type ReactNode, useCallback, useMemo, useReducer } from 'react';
-
-const cartInitials: CartInitialProps = {
-    isCartOpened: false,
-    cartItems: [],
-};
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
     const [state, dispatch] = useReducer(reducer, cartInitials);
@@ -35,12 +31,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     const onProductQuantityIncrement = useCallback((pId: number) => {
-        console.log('increment');
         dispatch({ type: QUANTITY_INCREMENT, payload: pId });
     }, []);
 
     const onProductQuantityDecrement = useCallback((pId: number) => {
         dispatch({ type: QUANTITY_DECREMENT, payload: pId });
+    }, []);
+
+    const onResetAll = useCallback(() => {
+        dispatch({ type: RESET_ALL });
     }, []);
 
     const contextState = useMemo(
@@ -50,6 +49,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             hideCart,
             addToCart,
             onRemoveAll,
+            onResetAll,
             onProductQuantityIncrement,
             onProductQuantityDecrement,
         }),
@@ -59,6 +59,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             state,
             addToCart,
             onRemoveAll,
+            onResetAll,
             onProductQuantityIncrement,
             onProductQuantityDecrement,
         ]
