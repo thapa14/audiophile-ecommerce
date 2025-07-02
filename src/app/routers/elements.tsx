@@ -1,7 +1,7 @@
 import { type ComponentType, lazy, type LazyExoticComponent, Suspense } from 'react';
 import { ShimmerLoader } from 'shared/ui/ShimmerLoader';
 
-const Loadable = <P extends object>(Component: LazyExoticComponent<ComponentType<P>>, type: string) => {
+const Loadable = <P extends object>(Component: LazyExoticComponent<ComponentType<P>>, type?: 'default' | 'product' | 'category' | 'home') => {
     return (props: P) => (
         <Suspense 
             fallback={
@@ -9,7 +9,7 @@ const Loadable = <P extends object>(Component: LazyExoticComponent<ComponentType
                     <ShimmerLoader 
                         fullScreen={false} 
                         className="min-h-[calc(100vh-90px)]"
-                        type="default"
+                        type={type}
                     />
                 </div>
             }
