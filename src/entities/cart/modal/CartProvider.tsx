@@ -9,11 +9,21 @@ import {
 } from 'entities/cart/modal/cartActions';
 import { CartContext } from 'entities/cart/modal/cartContext';
 import { cartInitials } from 'entities/cart/modal/cartDefaults';
+import { getStoredCart, setStoredCart, clearStoredCart } from 'entities/cart/lib/cartStorage';
 import { reducer } from 'entities/cart/modal/cartReducers';
-import { type ReactNode, useCallback, useMemo, useReducer } from 'react';
+import { type ReactNode, useCallback, useMemo, useReducer, useEffect } from 'react';
+
+// Initialize state from localStorage or use defaults
+const getInitialState = () => {
+    const storedCartItems = getStoredCart();
+    return {
+        ...cartInitials,
+        cartItems: storedCartItems || cartInitials.cartItems
+    };
+};
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-    const [state, dispatch] = useReducer(reducer, cartInitials);
+    const [state, dispatch] = useReducer(reducer, getInitialState());
 
     const showCart = useCallback(() => {
         dispatch({ type: SHOW_CART, payload: true });
@@ -40,7 +50,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     const onResetAll = useCallback(() => {
         dispatch({ type: RESET_ALL });
+        clearStoredCart();
     }, []);
+
+    // Save cart items to localStorage whenever they change
+    useEffect(() => {
+        setStoredCart(state.cartItems);
+    }, [state.cartItems]);
 
     const contextState = useMemo(
         () => ({
@@ -49,19 +65,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             hideCart,
             addToCart,
             onRemoveAll,
-            onResetAll,
             onProductQuantityIncrement,
             onProductQuantityDecrement,
+            onResetAll,
         }),
         [
-            hideCart,
-            showCart,
             state,
+            showCart,
+            hideCart,
             addToCart,
             onRemoveAll,
-            onResetAll,
             onProductQuantityIncrement,
             onProductQuantityDecrement,
+            onResetAll,
         ]
     );
 

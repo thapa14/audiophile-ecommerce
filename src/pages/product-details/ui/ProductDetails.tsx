@@ -4,18 +4,14 @@ import type { FC } from 'react';
 import { Button } from 'shared/ui';
 import { Image } from 'shared/ui/Image';
 import { ProductCategoryList } from 'features/product-category-list';
-import { PageLoader } from 'shared/ui/PageLoader';
+import { ProductDetailsSkeleton } from 'shared/ui/ProductDetailsSkeleton';
 import { YouMayAlsoLike } from 'widgets/you-may-also-like';
 
 export const ProductDetails: FC = () => {
     const { productData, loading, onBackClick } = useProductDetails();
 
     if (loading) {
-        return (
-            <div className="pt-[90px]">
-                <PageLoader />
-            </div>
-        );
+        return <ProductDetailsSkeleton />;
     }
 
     if (!productData) {
