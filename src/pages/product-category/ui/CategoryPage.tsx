@@ -2,17 +2,13 @@ import { usePageData } from 'pages/product-category';
 import { ProductInfoCard } from 'pages/product-category/ui/ProductInfoCard';
 import type { FC } from 'react';
 import { ProductCategoryList } from 'features/product-category-list';
-import { PageLoader } from 'shared/ui/PageLoader';
+import { CategoryPageSkeleton } from 'shared/ui/CategoryPageSkeleton';
 
 export const CategoryPage: FC = () => {
     const { pageData, category, loading } = usePageData();
 
     if (loading) {
-        return (
-            <div className="pt-[90px]">
-                <PageLoader />
-            </div>
-        );
+        return <CategoryPageSkeleton />;
     }
     return (
         <div>
