@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 
 export const useAddToCart = ({ productId }: { productId: number }) => {
     const { addToCart, cartItems } = useCartContext();
+    
     const itemInCart: CartItemsType | undefined = useMemo(() => {
         return cartItems.find(({ id }) => id === productId);
     }, [cartItems, productId]);
@@ -34,7 +35,7 @@ export const useAddToCart = ({ productId }: { productId: number }) => {
 
     const onQuantityChange: ChangeEventHandler<HTMLInputElement> = useCallback(e => {
         const val = Number(e.target.value);
-        if (val >= 0) {
+        if (val > 0 ) {
             setQuantity(Number(val));
         } else {
             setQuantity(0);

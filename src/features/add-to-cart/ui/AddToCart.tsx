@@ -2,7 +2,7 @@ import { useAddToCart } from 'features/add-to-cart/modal/useAddToCart';
 import type { AddToCartProps } from 'features/add-to-cart/ui/AddToCart.types';
 import { type FC } from 'react';
 import { Button } from 'shared/ui';
-import { QuantityCounter } from 'shared/ui/QuantityCounter';
+import { QuantityCounter } from 'shared/ui/quantityCounter/QuantityCounter';
 
 export const AddToCart: FC<AddToCartProps> = ({ pId, price }) => {
     const { quantity, onIncrement, onDecrement, onQuantityChange, onAddToCart, hasAlreadyAdded } =
