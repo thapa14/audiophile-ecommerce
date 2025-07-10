@@ -47,5 +47,8 @@
   },
   "include": [
     "src"
-  ]
+  ],
+   "types": [
+    "vitest/globals"
+   ]
 }
