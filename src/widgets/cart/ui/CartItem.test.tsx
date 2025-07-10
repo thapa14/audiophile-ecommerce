@@ -1,6 +1,6 @@
-import { afterAll, beforeEach, describe, expect, vi, it } from 'vitest';
+import { beforeEach, describe, expect, vi, it } from 'vitest';
 import { CartItem } from './CartItem.tsx';
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import allProducts from 'shared/data.json';
 import userEvent from '@testing-library/user-event';
 
@@ -29,6 +29,9 @@ describe('CartItem', () => {
     };
 
     const product = allProducts.find(p => p.id === mockCartItem.id);
+if (!product) {
+    throw new Error(`Test setup error: No product found in allProducts with id ${mockCartItem.id}`);
+}
     const user = userEvent.setup();
 
     beforeEach(() => {
