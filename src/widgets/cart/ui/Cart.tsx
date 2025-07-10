@@ -28,7 +28,7 @@ export const Cart: FC = () => {
                     </div>
                     <div className="flex flex-col gap-y-8">
                         {cartLength > 0 ? (
-                            <div className="flex flex-col gap-y-6">
+                            <div className="flex flex-col gap-y-6" data-testid="cart-item-wrapper">
                                 {cartItems.map(item => (
                                     <CartItem key={item.id} data={item} />
                                 ))}

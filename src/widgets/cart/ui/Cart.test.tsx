@@ -31,7 +31,7 @@ describe('Cart Component', () => {
             price: 200,
         },
     ];
-    const user =  userEvent.setup();
+    const user = userEvent.setup();
 
     beforeEach(async () => {
         vi.clearAllMocks();
@@ -60,7 +60,6 @@ describe('Cart Component', () => {
         );
     };
 
-
     it('should render empty cart message', () => {
         renderCart([]);
         expect(screen.getByRole('heading', { name: 'Empty Cart' })).toBeInTheDocument();
@@ -68,19 +67,38 @@ describe('Cart Component', () => {
         expect(screen.queryByRole('button', { name: /checkout/i })).not.toBeInTheDocument();
     });
 
-    it('should render correct cart length', () => {
+
+    it("should render cart elements", () => {
+        renderCart(mockCartItems);
+        const cartItemsWrapper = screen.getByTestId("cart-item-wrapper")
+        expect(cartItemsWrapper.childElementCount).toBe(2)
+    });
+
+    it('should render cart length', () => {
         renderCart(mockCartItems);
         const cartLengthTextElement = screen.getByRole('heading', { name: 'Cart (2)' });
         expect(cartLengthTextElement).toBeInTheDocument();
     });
 
-    it('should render remove all button', async () => {
+
+    it('should render correct cart total ', () => {
+        renderCart(mockCartItems);
+        const cartTotalElement = screen.getByRole('heading', { name: '$ 900' });
+        expect(cartTotalElement).toBeInTheDocument();
+    });
+
+    it('should call checkout function when click on Checkout button', async () => {
+        renderCart(mockCartItems);
+        const checkoutButtonElement = screen.getByRole('button', { name: /checkout/i });
+        await user.click(checkoutButtonElement);
+        expect(mockOnCheckout).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call onRemoveAll function when clicked on Remove all button', async () => {
         renderCart(mockCartItems);
         const removeAllButtonElement = screen.getByRole('button', { name: /remove all/i });
-        expect(removeAllButtonElement).toBeInTheDocument();
-
         await user.click(removeAllButtonElement);
         expect(mockOnRemoveAll).toHaveBeenCalledTimes(1)
+    })
 
-    });
 });

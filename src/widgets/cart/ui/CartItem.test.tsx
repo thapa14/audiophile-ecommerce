@@ -35,9 +35,6 @@ describe('CartItem', () => {
         vi.clearAllMocks();
     });
 
-    afterAll(() => {
-        cleanup();
-    });
 
     it('should render image correctly', () => {
         renderCartItem();
