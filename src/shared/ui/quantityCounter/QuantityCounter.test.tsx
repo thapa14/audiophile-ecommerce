@@ -54,7 +54,7 @@ describe('QuantityCounter', () => {
 
             render(
                 <QuantityCounter
-                    quantity={99}
+                    quantity={10}
                     onIncrement={mockOnIncrement}
                     onDecrement={() => {}}
                     onQuantityChange={() => {}}
