@@ -124,8 +124,9 @@ const HomeShimmer = () => (
 
 export const ShimmerLoader = ({ fullScreen = true, className, type = 'default', ...props }: ShimmerLoaderProps) => {
   const wrapperClasses = cn(
-    'bg-white/95 backdrop-blur-sm transition-opacity duration-300',
+    'bg-white/98 backdrop-blur-sm transition-all duration-500 ease-in-out animate-in fade-in',
     fullScreen ? 'fixed inset-0 top-[90px] z-50 overflow-y-auto' : '',
+    'will-change-opacity transform-gpu',
     className
   );
 

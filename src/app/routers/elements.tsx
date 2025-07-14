@@ -5,16 +5,18 @@ const Loadable = <P extends object>(Component: LazyExoticComponent<ComponentType
     return (props: P) => (
         <Suspense 
             fallback={
-                <div className="min-h-screen pt-[90px] bg-white/95">
+                <div className="min-h-screen pt-[90px] bg-white transition-opacity duration-500 ease-in-out">
                     <ShimmerLoader 
                         fullScreen={false} 
-                        className="min-h-[calc(100vh-90px)]"
+                        className="min-h-[calc(100vh-90px)] opacity-100 animate-in fade-in duration-300"
                         type={type}
                     />
                 </div>
             }
         >
-            <Component {...props} />
+            <div className="animate-in fade-in duration-500 ease-in-out">
+                <Component {...props} />
+            </div>
         </Suspense>
     );
 };
