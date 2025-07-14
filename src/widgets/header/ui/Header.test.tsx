@@ -112,10 +112,10 @@ describe('Header component', () => {
         });
         it('should render nav links', () => {
             render(<Header />);
-            expect(screen.getByRole('link', { name: /home/i }));
-            expect(screen.getByRole('link', { name: /headphones/i }));
-            expect(screen.getByRole('link', { name: /earphones/i }));
-            expect(screen.getByRole('link', { name: /speakers/i }));
+            expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
+            expect(screen.getByRole('link', { name: /headphones/i })).toBeInTheDocument();
+            expect(screen.getByRole('link', { name: /earphones/i })).toBeInTheDocument();
+            expect(screen.getByRole('link', { name: /speakers/i })).toBeInTheDocument();
         });
         it('renders mobile menu button', () => {
             render(<Header />);
@@ -143,10 +143,10 @@ describe('Header component', () => {
         it("call toggleMenu when menu button is clicked", async () => {
             const mockToggleMenu = vi.fn()
             mockUseHeader.mockReturnValue({ ...defaultUseHeaderValue, toggleMenu: mockToggleMenu});
-            user.setup()
+           const userEvent = user.setup()
             render(<Header />)
             const iconButton = screen.getByRole('button', { name: /mobile menu/i });
-            await user.click(iconButton);
+            await userEvent.click(iconButton);
             expect(mockToggleMenu).toHaveBeenCalledTimes(1)
         })
 
@@ -154,6 +154,7 @@ describe('Header component', () => {
             mockUseHeader.mockReturnValue({ ...defaultUseHeaderValue,  isMenuOpened: false});
             render(<Header />);
             const mobileMenu = screen.queryByTestId('product-category-list');
+            expect(mobileMenu).toBeInTheDocument();
             expect(mobileMenu).not.toBeVisible()
         })
     });
