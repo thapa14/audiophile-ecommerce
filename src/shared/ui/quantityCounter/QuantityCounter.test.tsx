@@ -4,6 +4,12 @@ import user from '@testing-library/user-event';
 import { QuantityCounter } from 'shared/ui';
 import { useState } from 'react';
 
+vi.mock("@iconify/react", () => ({
+    Icon: ({width, height}: any) => (
+        <div data-width={width} data-height={height} />
+    )
+}))
+
 const TestHarness = () => {
     const [value, setValue] = useState<number>(1);
     return (
@@ -15,6 +21,7 @@ const TestHarness = () => {
         />
     );
 };
+
 describe('QuantityCounter', () => {
     it('should render correctly', () => {
         render(

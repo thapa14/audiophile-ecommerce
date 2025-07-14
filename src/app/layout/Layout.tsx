@@ -15,9 +15,11 @@ export function Layout(): ReactNode {
             onClick={() => (isCartOpened ? hideCart() : null)}
         >
             <Header />
-            <div className="relative min-h-screen flex-grow">
+            <div className="relative min-h-screen flex-grow transition-all duration-300 ease-in-out">
                 <ScrollToTop />
-                <Outlet />
+                <div className="w-full h-full">
+                    <Outlet />
+                </div>
                 {isCartOpened && <Cart />}
             </div>
             <GlobalCalloutSection />

@@ -115,7 +115,7 @@ const Header: FC = () => {
                             e.stopPropagation();
                         }}
                     >
-                        <ProductCategoryList toggleMenu={toggleMenu} />
+                        <ProductCategoryList toggleMenu={toggleMenu}/>
                     </div>
                 </div>
             </div>

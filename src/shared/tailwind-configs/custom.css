@@ -46,3 +46,60 @@
         max-width: 70rem;
     }
 }
+
+/* Performance optimizations */
+.will-change-auto {
+    will-change: auto;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+.will-change-transform {
+    will-change: transform;
+}
+
+.transform-gpu {
+    transform: translateZ(0);
+}
+
+/* Layout shift prevention */
+.aspect-ratio-preserve {
+    aspect-ratio: attr(data-aspect-ratio);
+}
+
+/* Smooth transitions */
+.page-transition {
+    transition: all 0.5s ease-in-out;
+    transform: translateZ(0);
+}
+
+.image-fade {
+    transition: opacity 0.7s ease-in-out;
+    transform: translateZ(0);
+}
+
+/* Loading states */
+.skeleton {
+    background-color: #e5e7eb;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    border-radius: 0.5rem;
+}
+
+.skeleton-dark {
+    background-color: #d1d5db;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    border-radius: 0.5rem;
+}
+
+/* Critical CSS for layout stability */
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+/* Prevent layout shifts from images */
+img[width][height] {
+    height: auto;
+}
