@@ -22,13 +22,31 @@ const getCurrentImage = (mobile: string, tablet: string, desktop: string): strin
     return mobile;
 };
 
-// Debounce helper for resize events
-function debounce<T extends (...args: any[]) => void>(fn: T, delay: number): T {
-    let timeoutId: NodeJS.Timeout;
-    return ((...args: any[]) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => fn(...args), delay);
+// Debounce helper for resize events with cleanup
+function createDebouncedFunction<T extends (...args: Parameters<T>) => void>(
+    fn: T, 
+    delay: number
+): { debouncedFn: T; cleanup: () => void } {
+    let timeoutId: NodeJS.Timeout | null = null;
+    
+    const debouncedFn = ((...args: Parameters<T>) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+            fn(...args);
+            timeoutId = null;
+        }, delay);
     }) as T;
+    
+    const cleanup = () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+    };
+    
+    return { debouncedFn, cleanup };
 }
 
 export function useResponsiveImage({
@@ -49,8 +67,8 @@ export function useResponsiveImage({
         }
     }, [mobile, tablet, desktop, bgImage]);
 
-    const debouncedUpdateImage = useMemo(
-        () => debounce(updateImage, 150),
+    const { debouncedFn: debouncedUpdateImage, cleanup: cleanupDebounce } = useMemo(
+        () => createDebouncedFunction(updateImage, 150),
         [updateImage]
     );
 
@@ -68,21 +86,14 @@ export function useResponsiveImage({
         // Initial setup
         const initialImage = getCurrentImage(mobile, tablet, desktop);
         setBgImage(initialImage);
-        
-        // Preload current image to check loading state
-        if (initialImage) {
-            const img = new Image();
-            img.onload = () => setIsLoading(false);
-            img.onerror = () => setIsLoading(false);
-            img.src = initialImage;
-        }
 
         // Setup resize listener
         window.addEventListener('resize', debouncedUpdateImage);
         return () => {
             window.removeEventListener('resize', debouncedUpdateImage);
+            cleanupDebounce(); // Clear any pending debounced calls
         };
-    }, [mobile, tablet, desktop, debouncedUpdateImage]);
+    }, [mobile, tablet, desktop, debouncedUpdateImage, cleanupDebounce]);
 
     // Update loading state when image changes
     useEffect(() => {

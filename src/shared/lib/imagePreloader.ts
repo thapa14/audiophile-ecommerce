@@ -57,19 +57,26 @@ class ImagePreloader {
         images.forEach(({ src, sizes, fetchPriority = 'high' }) => {
             if (typeof document === 'undefined') return;
 
-            // Check if already preloaded
-            const existingPreload = document.querySelector(`link[rel="preload"][href="${src}"]`);
-            if (existingPreload) return;
+            try {
+                // Check if already preloaded
+                const existingPreload = document.querySelector(`link[rel="preload"][href="${src}"]`);
+                if (existingPreload) return;
 
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = src;
-            if (sizes) link.setAttribute('imagesizes', sizes);
-            if (fetchPriority) link.setAttribute('fetchpriority', fetchPriority);
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                if (sizes) link.setAttribute('imagesizes', sizes);
+                if (fetchPriority) link.setAttribute('fetchpriority', fetchPriority);
 
-            document.head.appendChild(link);
-            this.preloadedImages.add(src);
+                document.head.appendChild(link);
+                this.preloadedImages.add(src);
+            } catch (error) {
+                // Handle DOM manipulation errors gracefully
+                console.warn(`Failed to preload image: ${src}`, error);
+                // Fallback: still mark as "preloaded" to avoid repeated attempts
+                this.preloadedImages.add(src);
+            }
         });
     }
 
@@ -96,29 +103,41 @@ class ImagePreloader {
     ): Promise<PreloadResult> {
         return new Promise((resolve) => {
             if (priority && typeof document !== 'undefined') {
-                // Use link preload for critical images
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = src;
-                if (sizes) link.setAttribute('imagesizes', sizes);
-                if (fetchPriority) link.setAttribute('fetchpriority', fetchPriority);
+                try {
+                    // Use link preload for critical images
+                    const link = document.createElement('link');
+                    link.rel = 'preload';
+                    link.as = 'image';
+                    link.href = src;
+                    if (sizes) link.setAttribute('imagesizes', sizes);
+                    if (fetchPriority) link.setAttribute('fetchpriority', fetchPriority);
 
-                link.onload = () => resolve({ success: true, src });
-                link.onerror = () => resolve({ success: false, src, error: 'Failed to preload via link' });
+                    link.onload = () => resolve({ success: true, src });
+                    link.onerror = () => resolve({ success: false, src, error: 'Failed to preload via link' });
 
-                document.head.appendChild(link);
+                    document.head.appendChild(link);
+                } catch (error) {
+                    // Handle DOM manipulation errors
+                    console.warn(`Failed to create preload link for: ${src}`, error);
+                    resolve({ success: false, src, error: `DOM error: ${error instanceof Error ? error.message : 'Unknown error'}` });
+                }
             } else {
-                // Use Image object for regular preloading
-                const img = new Image();
-                
-                img.onload = () => resolve({ success: true, src });
-                img.onerror = () => resolve({ success: false, src, error: 'Failed to load image' });
-                
-                // Set sizes attribute if provided
-                if (sizes) img.sizes = sizes;
-                
-                img.src = src;
+                try {
+                    // Use Image object for regular preloading
+                    const img = new Image();
+                    
+                    img.onload = () => resolve({ success: true, src });
+                    img.onerror = () => resolve({ success: false, src, error: 'Failed to load image' });
+                    
+                    // Set sizes attribute if provided
+                    if (sizes) img.sizes = sizes;
+                    
+                    img.src = src;
+                } catch (error) {
+                    // Handle Image object creation errors
+                    console.warn(`Failed to create Image object for: ${src}`, error);
+                    resolve({ success: false, src, error: `Image creation error: ${error instanceof Error ? error.message : 'Unknown error'}` });
+                }
             }
         });
     }

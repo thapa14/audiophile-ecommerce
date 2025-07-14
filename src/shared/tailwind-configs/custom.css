@@ -102,5 +102,4 @@ img {
 /* Prevent layout shifts from images */
 img[width][height] {
     height: auto;
-    aspect-ratio: attr(width) / attr(height);
 }
